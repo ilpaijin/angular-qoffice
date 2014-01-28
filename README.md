@@ -6,14 +6,14 @@ Trying to find out how to structure an external module to manage the new Qoffice
 ##Require
 
 * bower
-```shell
-bower install angular-route
-bower install angular-mocks
-bower install angular-result
+```
+    bower install angular-route
+    bower install angular-mocks
+    bower install angular-result
 ```
 * nodejs
 ```shell
-node install
+    npm install
 ```
 
 ##Bundles structure
