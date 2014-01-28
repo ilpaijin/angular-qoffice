@@ -6,14 +6,16 @@ Trying to find out how to structure an external module to manage the new Qoffice
 ##Require
 
 * bower
-```
-    bower install angular-route
-    bower install angular-mocks
-    bower install angular-result
+
+```shell
+bower install angular-route
+bower install angular-mocks
+bower install angular-result
 ```
 * nodejs
+
 ```shell
-    npm install
+npm install
 ```
 
 ##Bundles structure
@@ -22,12 +24,12 @@ Trying to find out how to structure an external module to manage the new Qoffice
 
 Example:
 
-```js
+```dir
 app/                            -- main root dir
   bundles/                      -- bundles dir
     ilpaijin/                   -- namespace
       qoffice/                  -- module name
-        mainModulefile.js
+        Qoffice.js              -- module file
         controllers/
           file.js
           ...
@@ -40,13 +42,22 @@ app/                            -- main root dir
 ```
 
 ##Adding it to the main app
-Simply requiring it as a dependency
-```
+####Simply requiring it as a dependency
+```js
+//app/App.js
 var mainApp = angular.module('mainApp', ['...', 'ilpaijin.qoffice']);
 ``` 
+####and load the script files
+```html
+<!-- Ilpaijin Qoffice -->
+<script src="app/bundles/ilpaijin/qoffice/src/Qoffice.js"></script>
+<script src="app/bundles/ilpaijin/qoffice/src/controllers/QofficeMainCtrl.js"></script>
+```
+
 
 ##MainModuleFile
-```
+```js
+//app/bundles.ilpaijin/qoffice/src/Qoffice.js
 angular
     .module('ilpaijin.qoffice', [])
     .config([
@@ -62,7 +73,8 @@ angular
 ```
 
 ##A controller
-```
+```js
+//app/bundles/ilpaijin/qoffice/src/controllers/QofficeMainCtrl.js
 "use strict";
 
 angular.module('ilpaijin.qoffice').controller('QofficeMainCtrl', ['$scope', '$rootScope',
